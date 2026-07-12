@@ -39,3 +39,8 @@ build/
 *.bak
 *.tmp
 *~
+
+# Raw/uncropped screenshot archives (may contain OS window chrome, file paths, etc.)
+*-original.*
+*-original/
+screenshots-archive/
