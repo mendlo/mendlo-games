@@ -42,7 +42,7 @@
     <circle cx="35.5" cy="86" r="5" fill="#ffb347"/>
     <circle cx="35.5" cy="86" r="2.6" fill="#ffe066"/>
 
-    <!-- A cow keeping watch over the mine — the "Moos" in the title. -->
+    <!-- A cow keeping watch over the mine, the "Moos" in the title. -->
     <line x1="123" y1="103" x2="126" y2="111" stroke="#f5f0e6" stroke-width="1.5"/>
     <circle cx="126" cy="112" r="1.5" fill="#2b2320"/>
     <line x1="106" y1="112" x2="106" y2="123" stroke="#f5f0e6" stroke-width="3" stroke-linecap="round"/>
