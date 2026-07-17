@@ -49,6 +49,7 @@ a { color: inherit; }
 }
 
 h1, h2, h3 { line-height: 1.15; margin: 0 0 0.75rem; }
+h3 { color: var(--studio-rust); }
 
 /* Buttons */
 .btn {
@@ -216,12 +217,41 @@ h1, h2, h3 { line-height: 1.15; margin: 0 0 0.75rem; }
   opacity: 0.85;
 }
 
-/* About */
-.about {
+/* Trailer */
+.trailer {
   background: var(--game-navy-1);
   padding: 4rem 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.about h3 { color: var(--accent-orange); }
+.trailer-tag {
+  max-width: 560px;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+.video-embed {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  margin: 2rem auto 0;
+  aspect-ratio: 16 / 9;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--game-navy-3);
+}
+.video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* About */
+.about {
+  background: var(--game-navy-2);
+  padding: 4rem 0;
+}
 .feature-grid {
   list-style: none;
   margin: 2rem 0 0;
@@ -232,7 +262,7 @@ h1, h2, h3 { line-height: 1.15; margin: 0 0 0.75rem; }
   gap: 1rem;
 }
 .feature-grid li {
-  background: var(--game-navy-2);
+  background: var(--game-navy-1);
   border: 1px solid var(--game-navy-3);
   border-radius: 8px;
   padding: 1.25rem 1rem;
@@ -255,10 +285,9 @@ h1, h2, h3 { line-height: 1.15; margin: 0 0 0.75rem; }
 
 /* Screenshots */
 .screenshots {
-  background: var(--game-navy-2);
+  background: var(--game-navy-1);
   padding: 4rem 0;
 }
-.screenshots h3 { color: var(--accent-yellow); }
 .screenshot-grid {
   margin-top: 2rem;
   display: grid;
@@ -271,13 +300,24 @@ h1, h2, h3 { line-height: 1.15; margin: 0 0 0.75rem; }
   border: 1px solid var(--game-navy-3);
 }
 
+/* CTA repeat */
+.cta-repeat {
+  background: var(--game-navy-2);
+  padding: 3rem 0;
+  text-align: center;
+}
+.cta-repeat p {
+  margin: 0 0 1rem;
+  opacity: 0.85;
+  font-size: 1.1rem;
+}
+
 /* More games */
 .more-games {
   background: var(--game-navy-1);
   padding: 3.5rem 0;
   text-align: center;
 }
-.more-games h3 { color: var(--accent-green); }
 .more-games p {
   max-width: 560px;
   margin: 0 auto;
