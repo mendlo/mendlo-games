@@ -42,6 +42,18 @@ img { max-width: 100%; display: block; }
 
 a { color: inherit; }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .wrap {
   max-width: 1080px;
   margin: 0 auto;
@@ -196,19 +208,37 @@ h3 { color: var(--studio-rust); }
 
 /* Game hero */
 .hero-game {
-  background: radial-gradient(circle at 50% 0%, var(--game-navy-2), var(--game-navy-1) 70%);
+  position: relative;
+  overflow: hidden;
+  background: var(--game-navy-1);
   padding: 4.5rem 0;
-  text-align: center;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.game-icon {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 1.25rem;
+.hero-game-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  opacity: 0.55;
 }
-.hero-game h2 {
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
-  color: var(--game-cream);
+.hero-game::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(47, 53, 86, 0.35), var(--game-navy-1) 78%);
+}
+.hero-game-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+.title-logo {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto 1rem;
 }
 .tagline {
   max-width: 620px;
@@ -311,12 +341,40 @@ h3 { color: var(--studio-rust); }
   opacity: 0.85;
   font-size: 1.1rem;
 }
+.cta-capsule {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 auto 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--game-navy-3);
+}
 
 /* More games */
 .more-games {
+  position: relative;
+  overflow: hidden;
   background: var(--game-navy-1);
   padding: 3.5rem 0;
   text-align: center;
+}
+.more-games-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+  opacity: 0.4;
+}
+.more-games::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, var(--game-navy-1), rgba(26, 28, 44, 0.5) 40%, var(--game-navy-1) 92%);
+}
+.more-games .wrap {
+  position: relative;
+  z-index: 1;
 }
 .more-games p {
   max-width: 560px;
