@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="planetBody" cx="36%" cy="30%" r="78%">
+      <stop offset="0%" stop-color="#f6c496"/>
+      <stop offset="26%" stop-color="#e08a3a"/>
+      <stop offset="52%" stop-color="#d9714a"/>
+      <stop offset="76%" stop-color="#5c281d"/>
+      <stop offset="100%" stop-color="#0d0806"/>
+    </radialGradient>
+
+    <radialGradient id="planetGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="58%" stop-color="#d9714a" stop-opacity="0"/>
+      <stop offset="90%" stop-color="#e08a3a" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#e08a3a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Mars-like mottled / streaky surface texture: dark albedo patches stretched into
+         horizontal streaks, composited onto the sphere and clipped to its own alpha -->
+    <filter id="marsSurface" x="-30%" y="-30%" width="160%" height="160%">
+      <!-- cool blue-gray tint over the shadowed side, derived from the base gradient's own darkness -->
+      <feColorMatrix in="SourceGraphic" type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -0.6 -0.6 -0.6 0 0.55" result="shadowMask"/>
+      <feFlood flood-color="#38484c" flood-opacity="0.55" result="shadowColor"/>
+      <feComposite in="shadowColor" in2="shadowMask" operator="in" result="shadowTint"/>
+      <feComposite in="shadowTint" in2="SourceAlpha" operator="in" result="shadowClipped"/>
+
+      <!-- large soft dark albedo regions (like Syrtis Major) -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.006 0.018" numOctaves="3" seed="12" result="blotch"/>
+      <feColorMatrix in="blotch" type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.34 0.33 0.33 0 -0.56" result="mask1"/>
+      <feComponentTransfer in="mask1" result="mask">
+        <feFuncA type="linear" slope="4.2" intercept="0"/>
+      </feComponentTransfer>
+      <feFlood flood-color="#2a1208" flood-opacity="0.8" result="darkColor"/>
+      <feComposite in="darkColor" in2="mask" operator="in" result="darkPatches"/>
+      <feComposite in="darkPatches" in2="SourceAlpha" operator="in" result="darkClipped"/>
+
+      <!-- lighter dusty streaks -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.005 0.03" numOctaves="3" seed="27" result="blotch2"/>
+      <feColorMatrix in="blotch2" type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.34 0.33 0.33 0 -0.6" result="mask2a"/>
+      <feComponentTransfer in="mask2a" result="mask2">
+        <feFuncA type="linear" slope="4.5" intercept="0"/>
+      </feComponentTransfer>
+      <feFlood flood-color="#8a4420" flood-opacity="0.6" result="lightColor"/>
+      <feComposite in="lightColor" in2="mask2" operator="in" result="lightPatches"/>
+      <feComposite in="lightPatches" in2="SourceAlpha" operator="in" result="lightClipped"/>
+
+      <!-- fine horizontal streak/grain detail, VHS-smear look -->
+      <feTurbulence type="fractalNoise" baseFrequency="0.003 0.09" numOctaves="2" seed="41" result="fine"/>
+      <feColorMatrix in="fine" type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.34 0.33 0.33 0 -0.6" result="mask3a"/>
+      <feComponentTransfer in="mask3a" result="mask3">
+        <feFuncA type="linear" slope="3.5" intercept="0"/>
+      </feComponentTransfer>
+      <feFlood flood-color="#1a0d06" flood-opacity="0.55" result="fineColor"/>
+      <feComposite in="fineColor" in2="mask3" operator="in" result="finePatches"/>
+      <feComposite in="finePatches" in2="SourceAlpha" operator="in" result="fineClipped"/>
+
+      <feMerge>
+        <feMergeNode in="SourceGraphic"/>
+        <feMergeNode in="shadowClipped"/>
+        <feMergeNode in="lightClipped"/>
+        <feMergeNode in="darkClipped"/>
+        <feMergeNode in="fineClipped"/>
+      </feMerge>
+    </filter>
+
+    <filter id="blurLg"><feGaussianBlur stdDeviation="24"/></filter>
+
+    <clipPath id="circleClip">
+      <circle cx="512" cy="512" r="370"/>
+    </clipPath>
+
+    <!-- CRT scanlines, matches .scanlines in style.css (repeating-linear-gradient, 1px dark / 2px transparent, overlay blend) -->
+    <pattern id="scanlines" width="1" height="3" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="1" height="3" fill="transparent"/>
+      <rect x="0" y="0" width="1" height="1" fill="#000000" fill-opacity="0.45"/>
+    </pattern>
+
+    <!-- matches .hero-studio::after in style.css: fades the bottom of the sphere to full black -->
+    <linearGradient id="afterFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="38%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="68%" stop-color="#000000" stop-opacity="0.65"/>
+      <stop offset="88%" stop-color="#000000" stop-opacity="0.97"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- orbit ring -->
+  <circle cx="512" cy="512" r="470" fill="none" stroke="#3ac9c9" stroke-opacity="0.28" stroke-width="2"/>
+  <circle cx="512" cy="512" r="470" fill="none" stroke="#e0483a" stroke-opacity="0.18" stroke-width="1"/>
+  <circle cx="506" cy="512" r="470" fill="none" stroke="#3ac9c9" stroke-width="5"
+    stroke-dasharray="30 3000" stroke-dashoffset="-90" opacity="0.85"/>
+  <circle cx="517" cy="516" r="470" fill="none" stroke="#e0483a" stroke-width="4"
+    stroke-dasharray="26 3000" stroke-dashoffset="-94" opacity="0.8"/>
+
+  <!-- planet glow -->
+  <circle cx="512" cy="512" r="430" fill="url(#planetGlow)" filter="url(#blurLg)"/>
+
+  <!-- chromatic aberration rim -->
+  <circle cx="506" cy="508" r="370" fill="none" stroke="#3ac9c9" stroke-width="3" opacity="0.55"/>
+  <circle cx="518" cy="516" r="370" fill="none" stroke="#e0483a" stroke-width="3" opacity="0.55"/>
+
+  <!-- planet body with Mars-like mottled surface -->
+  <circle cx="512" cy="512" r="370" fill="url(#planetBody)" filter="url(#marsSurface)"/>
+
+  <!-- glitch tears on planet -->
+  <g clip-path="url(#circleClip)">
+    
+    <rect x="322" y="377" width="190" height="16" fill="#0a0908" opacity="0.4"/>
+    <rect x="258" y="377" width="190" height="16" fill="#3ac9c9" opacity="0.6" style="mix-blend-mode:screen"/>
+    <rect x="386" y="377" width="190" height="16" fill="#e0483a" opacity="0.6" style="mix-blend-mode:screen"/>
+    
+    <rect x="517" y="587" width="210" height="11" fill="#0a0908" opacity="0.32"/>
+    <rect x="447" y="587" width="210" height="11" fill="#3ac9c9" opacity="0.55" style="mix-blend-mode:screen"/>
+    <rect x="587" y="587" width="210" height="11" fill="#e0483a" opacity="0.55" style="mix-blend-mode:screen"/>
+  </g>
+
+  <circle cx="512" cy="512" r="370" fill="none" stroke="#f5f0e6" stroke-opacity="0.14" stroke-width="1.5"/>
+
+  <!-- darkening stack, confined to the sphere so the surrounding canvas stays transparent -->
+  <g clip-path="url(#circleClip)">
+    <!-- matches .hero-studio-bg opacity:0.65 -->
+    <rect x="142" y="142" width="740" height="740" fill="#0a0908" opacity="0.35"/>
+    <!-- matches .hero-studio::after, fully opaque black by the bottom of the sphere -->
+    <rect x="142" y="142" width="740" height="740" fill="url(#afterFade)"/>
+    <!-- CRT scanline overlay -->
+    <rect x="142" y="142" width="740" height="740" fill="url(#scanlines)" style="mix-blend-mode:overlay"/>
+  </g>
+</svg>
