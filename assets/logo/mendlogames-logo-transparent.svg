@@ -87,16 +87,6 @@
       <rect x="0" y="0" width="1" height="1" fill="#000000" fill-opacity="0.5"/>
     </pattern>
 
-    <!-- terminator shadow: an offset dark disc (down-and-left of the sphere's center) so the
-         day/night boundary reads as a curved diagonal sweep, like the reference photo, rather
-         than a flat horizontal band -->
-    <radialGradient id="shadowDisc" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#000000" stop-opacity="1"/>
-      <stop offset="38%" stop-color="#000000" stop-opacity="1"/>
-      <stop offset="68%" stop-color="#000000" stop-opacity="0.8"/>
-      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
-    </radialGradient>
-
     <!-- alpha ramp: the already-black shadow dissolves into transparency toward the bottom -->
     <linearGradient id="fadeMaskGrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#ffffff"/>
@@ -115,26 +105,6 @@
   <!-- orbit ring -->
   <circle cx="512" cy="512" r="470" fill="none" stroke="#3ac9c9" stroke-opacity="0.28" stroke-width="2"/>
   <circle cx="512" cy="512" r="470" fill="none" stroke="#e0483a" stroke-opacity="0.18" stroke-width="1"/>
-  <circle cx="506" cy="512" r="470" fill="none" stroke="#3ac9c9" stroke-width="5"
-    stroke-dasharray="30 3000" stroke-dashoffset="-90" opacity="0.85"/>
-  <circle cx="517" cy="516" r="470" fill="none" stroke="#e0483a" stroke-width="4"
-    stroke-dasharray="26 3000" stroke-dashoffset="-94" opacity="0.8"/>
-  
-    <rect x="773" y="163" width="84" height="34" fill="#3ac9c9" opacity="0.85" style="mix-blend-mode:screen"/>
-    <rect x="749" y="151" width="84" height="34" fill="#e0483a" opacity="0.85" style="mix-blend-mode:screen"/>
-    
-  
-    <rect x="90" y="654" width="62" height="24" fill="#3ac9c9" opacity="0.8" style="mix-blend-mode:screen"/>
-    <rect x="72" y="646" width="62" height="24" fill="#e0483a" opacity="0.8" style="mix-blend-mode:screen"/>
-    
-  
-    <rect x="562" y="952" width="70" height="20" fill="#3ac9c9" opacity="0.75" style="mix-blend-mode:screen"/>
-    <rect x="534" y="946" width="70" height="20" fill="#e0483a" opacity="0.75" style="mix-blend-mode:screen"/>
-    
-  
-    <rect x="288" y="85" width="40" height="40" fill="#3ac9c9" opacity="0.7" style="mix-blend-mode:screen"/>
-    <rect x="274" y="71" width="40" height="40" fill="#e0483a" opacity="0.7" style="mix-blend-mode:screen"/>
-    
 
   <!-- planet glow (unaffected by the fade so the halo stays soft) -->
   <circle cx="512" cy="512" r="430" fill="url(#planetGlow)" filter="url(#blurLg)"/>
@@ -202,11 +172,49 @@
 
     <circle cx="512" cy="512" r="370" fill="none" stroke="#f5f0e6" stroke-opacity="0.14" stroke-width="1.5"/>
 
-    <!-- darkening stack: diagonal terminator shadow, shaped like the reference photo -->
+    <!-- darkening stack: uniform dim + CRT scanlines (no added directional shadow) -->
     <g clip-path="url(#circleClip)">
       <rect x="142" y="142" width="740" height="740" fill="#0a0908" opacity="0.35"/>
-      <circle cx="327" cy="678" r="425" fill="url(#shadowDisc)"/>
       <rect x="142" y="142" width="740" height="740" fill="url(#scanlines)" style="mix-blend-mode:overlay"/>
+    </g>
+
+    <!-- character face, on top of everything -->
+    <g clip-path="url(#circleClip)">
+      
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#5fe0d8" stop-opacity="0.95"/>
+      <stop offset="55%" stop-color="#5fe0d8" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#5fe0d8" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="eyeBloom" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+
+    <!-- eye sockets -->
+    <circle cx="394" cy="472" r="46" fill="#0a0504"/>
+    <circle cx="630" cy="472" r="46" fill="#0a0504"/>
+    <circle cx="394" cy="472" r="46" fill="none" stroke="#3ac9c9" stroke-width="2" opacity="0.5"/>
+    <circle cx="630" cy="472" r="46" fill="none" stroke="#3ac9c9" stroke-width="2" opacity="0.5"/>
+
+    <!-- glowing lens core: soft bloom + crisp center, immediately reads as an eye -->
+    <circle cx="394" cy="472" r="30" fill="url(#eyeGlow)" filter="url(#eyeBloom)"/>
+    <circle cx="630" cy="472" r="30" fill="url(#eyeGlow)" filter="url(#eyeBloom)"/>
+    <circle cx="394" cy="472" r="15" fill="#5fe0d8"/>
+    <circle cx="630" cy="472" r="15" fill="#5fe0d8"/>
+    <circle cx="394" cy="472" r="6" fill="#f5fffd"/>
+    <circle cx="630" cy="472" r="6" fill="#f5fffd"/>
+
+    <!-- heavy lid: a straight cut across the top of each socket for a composed, half-lidded gaze -->
+    <rect x="345" y="423" width="98" height="38" fill="#0a0504"/>
+    <rect x="581" y="423" width="98" height="38" fill="#0a0504"/>
+
+    <!-- mouth: a bigger, weightier plate to match the visor/eyes, still flat and unreadable -->
+    <rect x="404" y="590" width="216" height="40" rx="20" fill="#0a0504" opacity="0.9"/>
+    <rect x="404" y="590" width="216" height="40" rx="20" fill="none" stroke="#3ac9c9" stroke-width="1.5" opacity="0.4"/>
+    <line x1="430" y1="610" x2="594" y2="610" stroke="#1a0f0c" stroke-width="22" stroke-linecap="round"/>
+    <line x1="430" y1="610" x2="594" y2="610" stroke="#3ac9c9" stroke-width="22" stroke-linecap="round" opacity="0.3" transform="translate(-3,-3)"/>
+    <line x1="430" y1="610" x2="594" y2="610" stroke="#e0483a" stroke-width="22" stroke-linecap="round" opacity="0.3" transform="translate(3,3)"/>
+    
     </g>
   </g>
 </svg>
