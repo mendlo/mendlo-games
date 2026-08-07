@@ -422,6 +422,13 @@ h3 { color: var(--studio-rust); }
   border-top: 1px solid rgba(217, 113, 74, 0.25);
 }
 .footer-inner p { margin: 0.35rem 0; }
+.footer-social { font-size: 0.9rem; }
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.social-icon { flex-shrink: 0; }
 .wordmark.small {
   justify-content: center;
   color: var(--studio-rust);
