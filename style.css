@@ -105,11 +105,19 @@ h3 { color: var(--studio-rust); }
   padding-bottom: 0.85rem;
 }
 .wordmark {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-weight: 800;
   font-size: 1.4rem;
   letter-spacing: 0.02em;
   text-decoration: none;
   color: var(--studio-rust);
+}
+.wordmark-icon {
+  width: 1.9em;
+  height: 1.9em;
+  object-fit: contain;
 }
 .nav {
   display: flex;
@@ -415,6 +423,7 @@ h3 { color: var(--studio-rust); }
 }
 .footer-inner p { margin: 0.35rem 0; }
 .wordmark.small {
+  justify-content: center;
   color: var(--studio-rust);
   font-weight: 800;
   font-size: 1.2rem;
