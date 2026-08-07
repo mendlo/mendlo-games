@@ -445,8 +445,19 @@ h3 { color: var(--studio-rust); }
 
 /* Mobile */
 @media (max-width: 640px) {
+  .header-inner { gap: 0.5rem; flex-wrap: wrap; }
+  .wordmark { font-size: 1rem; gap: 0.3rem; flex-shrink: 0; }
+  .wordmark-icon { width: 1.3em; height: 1.3em; }
+  .header-inner .btn-steam { font-size: 0.8rem; padding: 0.5rem 0.7rem; flex-shrink: 0; }
   .nav { order: 3; width: 100%; justify-content: center; gap: 1rem; }
   .screenshot-grid { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
   .hero-studio-bg { transform: scale(1.15) translateY(-5.4%); }
+}
+
+/* Extra-narrow phones */
+@media (max-width: 340px) {
+  .wordmark { font-size: 0.9rem; }
+  .wordmark-icon { width: 1.15em; height: 1.15em; }
+  .header-inner .btn-steam { font-size: 0.72rem; padding: 0.45rem 0.55rem; }
 }
