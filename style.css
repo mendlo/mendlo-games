@@ -244,7 +244,7 @@ h3 { color: var(--studio-rust); }
     grid-template-columns: repeat(2, 1fr);
   }
   .games-columns .screenshot-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   #benders, #benders-trailer, #benders-widget, #benders-about, #benders-screenshots, #benders-cta {
