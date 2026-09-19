@@ -4,21 +4,20 @@ The official website for **mendlogames**, a small indie studio building strange,
 
 ## About
 
-This site introduces mendlogames' first title, **Miners, Moos & Miracles**, built from the ground up as an incremental idle game, wrapped in a retro CRT-styled shell. Tend a homestead (gold, barley, milk, eggs, and more), then dive into a handful of themed mini-games:
+This site introduces the studio's games:
 
-- **Dark Mine**: idle tower defense
-- **Cooking**: whip up dishes for the homestead
-- **Cow Ball**: the barnyard's favorite sport
-- **Chicken Coop**: keep the flock happy
-- **Wardrobe**: customize your character
-
-Miners, Moos & Miracles is coming to Steam.
+- **Ashburrow** (coming soon): a third-person action RPG with a rogue-lite heart. One life a run, gold banked
+  in full when you fall, a grave that returns half of what you lost, and co-op for up to six.
+- **Benders In Space**: mine the belts, raise colonies, and pick a side as three factions fight over a
+  fractured frontier. Wishlistable on Steam.
+- **Miners, Moos & Miracles**: an incremental idle game wrapped in a retro CRT-styled shell. Tend a homestead,
+  then step into a handful of themed mini-games. Out now on Steam.
 
 ## Structure
 
 - [index.html](index.html): single-page site
 - [style.css](style.css): styles
-- [assets/](assets/): favicon, icons, and screenshots
+- [assets/](assets/): favicon, icons, capsule art, and screenshots
 
 ## Development
 
