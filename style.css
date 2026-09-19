@@ -350,19 +350,45 @@ h3 { color: var(--studio-rust); }
   padding: 5.5rem 0 5rem;
 }
 .hero-game-featured .hero-game-bg {
-  opacity: 0.6;
-  object-position: center 45%;
+  opacity: 0.8;
+  /* Keep the dragon out from behind the wordmark.
+     The art is 2.2:1 and the hero is nearer 2:1, so `cover` crops it horizontally, and the
+     narrower the window the tighter that crop gets - which walks whatever sits at the centre of
+     the art straight back under a centred title. The dragon is already off-centre in `hero.webp`
+     (its head at 73% of the frame); these values pan the crop left as the window narrows, so the
+     head stays clear of the title instead of drifting off the right edge. */
+  object-position: 50% 45%;
   /* Fade the art out at the top so it meets the studio hero's black */
   mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
   -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 30%);
 }
+/* Panned left as the window narrows - see the note above. Tuned by rendering, not derived:
+   the crop fraction and the wordmark's share of the width both move with the viewport. */
+@media (max-width: 1200px) {
+  .hero-game-featured .hero-game-bg { object-position: 58% 45%; }
+}
+@media (max-width: 860px) {
+  .hero-game-featured .hero-game-bg { object-position: 68% 45%; }
+}
+@media (max-width: 640px) {
+  .hero-game-featured .hero-game-bg { object-position: 70% 45%; }
+}
+
 .hero-game-featured::after {
+  /* Three layers, and the order is the argument: black at the top edge so the art rises out of
+     the studio hero above it; a pool of light over the dragon on the right, which is the one
+     thing in the frame worth seeing; and a wash across the left, which is where the wordmark and
+     the paragraph sit and the only place the art has to give way to text. The old single vignette
+     was centred, so moving the dragon off-centre moved it into its own darkest ring. */
   background:
     linear-gradient(to bottom, var(--studio-bg) 0%, rgba(10, 9, 8, 0) 30%),
-    radial-gradient(circle at 50% 45%, rgba(143, 58, 28, 0.3), rgba(10, 9, 8, 0.92) 78%);
+    linear-gradient(to right, rgba(10, 9, 8, 0.72) 0%, rgba(10, 9, 8, 0.35) 45%, rgba(10, 9, 8, 0) 72%),
+    radial-gradient(ellipse 65% 85% at 72% 48%, rgba(143, 58, 28, 0.12), rgba(10, 9, 8, 0.78) 78%);
 }
 .hero-game-featured .title-logo {
-  max-width: 560px;
+  /* Capped in vw as well as px: at 560px flat the wordmark was 67% of an 800px window, and no
+     amount of panning fits a dragon into the third that was left. */
+  max-width: min(560px, 46vw);
   margin-bottom: 1.5rem;
 }
 .hero-game-featured .tagline {
@@ -581,7 +607,7 @@ h3 { color: var(--studio-rust); }
 @media (max-width: 860px) {
   .feature-grid { grid-template-columns: repeat(2, 1fr); }
   .screenshot-grid-wide { grid-template-columns: repeat(2, 1fr); }
-  .hero-game-featured .title-logo { max-width: 420px; }
+  .hero-game-featured .title-logo { max-width: min(420px, 52vw); }
 }
 
 /* Mobile */
@@ -591,6 +617,7 @@ h3 { color: var(--studio-rust); }
   .wordmark-icon { width: 1.3em; height: 1.3em; }
   .nav { justify-content: flex-end; gap: 1rem; }
   .nav-game-link { display: none; }
+  .hero-game-featured .title-logo { max-width: min(360px, 68vw); }
   .screenshot-grid,
   .screenshot-grid-wide { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
