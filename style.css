@@ -331,6 +331,9 @@ h3 { color: var(--studio-rust); }
   z-index: 1;
   text-align: center;
 }
+.hero-game-inner .btn-large {
+  margin-inline: 0.35rem;
+}
 .title-logo {
   width: 100%;
   max-width: 420px;
@@ -415,6 +418,7 @@ h3 { color: var(--studio-rust); }
 
 /* The Ashburrow sections read as one warm band above the two game columns */
 .ash-band.trailer,
+.ash-band.steam-widget,
 .ash-band.screenshots {
   background: var(--ash-dark);
 }
@@ -426,6 +430,7 @@ h3 { color: var(--studio-rust); }
   border-color: rgba(224, 176, 96, 0.22);
 }
 .ash-band .video-embed,
+.ash-band .steam-widget-embed,
 .ash-band .screenshot-grid img {
   border-color: rgba(224, 176, 96, 0.28);
 }
