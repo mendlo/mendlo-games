@@ -6,14 +6,16 @@ The official website for **mendlogames**, a small indie studio building strange,
 
 This site introduces the studio's games:
 
-- **Ashburrow** (coming soon): a third-person action RPG with a rogue-lite heart. One life a run, gold banked
-  in full when you fall, a grave that returns half of what you lost, and co-op for up to six.
+- **Ashburrow**: a third-person action RPG with a rogue-lite heart. One life a run, gold banked
+  in full when you fall, a grave that returns half of what you lost, and co-op for up to six. Out now on Steam.
 - **Benders In Space**: mine the belts, raise colonies, and pick a side as three factions fight over a
   fractured frontier. Out now on Steam.
 - **Miners, Moos & Miracles**: an incremental idle game wrapped in a retro CRT-styled shell. Tend a homestead,
   then step into a handful of themed mini-games. Out now on Steam.
 
-The two released games are also sold together as the
+All three games are sold together as the
+[mendlogames Collection](https://store.steampowered.com/bundle/92657/mendlogames/) bundle, and Benders In Space
+and Miners, Moos & Miracles are also sold as the
 [Farm & Frontier](https://store.steampowered.com/bundle/89385/mendlogames_collection/) bundle.
 
 ## Structure

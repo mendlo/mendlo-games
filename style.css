@@ -151,9 +151,10 @@ h3 { color: var(--studio-rust); }
 .hero-studio {
   position: relative;
   overflow: hidden;
-  min-height: 62vh;
+  min-height: 52vh;
+  padding: 5rem 0 2rem;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   background: var(--studio-bg);
 }
@@ -347,10 +348,10 @@ h3 { color: var(--studio-rust); }
   opacity: 0.85;
 }
 
-/* Featured announcement hero (Ashburrow) */
+/* Featured hero (Ashburrow) */
 .hero-game-featured {
   background: var(--studio-bg);
-  padding: 5.5rem 0 5rem;
+  padding: 2rem 0 5rem;
 }
 .hero-game-featured .hero-game-bg {
   opacity: 0.8;
@@ -398,7 +399,7 @@ h3 { color: var(--studio-rust); }
   max-width: 700px;
   font-size: 1.05rem;
 }
-.coming-soon {
+.badge {
   display: inline-block;
   margin: 0 0 1.25rem;
   padding: 0.3rem 1rem;
@@ -429,9 +430,13 @@ h3 { color: var(--studio-rust); }
   background: var(--ash-dark);
   border-color: rgba(224, 176, 96, 0.22);
 }
+.ash-band.cta-repeat {
+  background: var(--ash-panel);
+}
 .ash-band .video-embed,
 .ash-band .steam-widget-embed,
-.ash-band .screenshot-grid img {
+.ash-band .screenshot-grid img,
+.ash-band .cta-capsule {
   border-color: rgba(224, 176, 96, 0.28);
 }
 
@@ -577,7 +582,7 @@ h3 { color: var(--studio-rust); }
   border: 1px solid var(--game-navy-3);
 }
 
-/* Bundle band: the two released games, sold together */
+/* Bundle bands: all three games first, then the older two-game bundle as a quieter follow-up */
 .bundle-band {
   background: var(--game-navy-2);
   padding: 3.5rem 0;
@@ -586,7 +591,7 @@ h3 { color: var(--studio-rust); }
 }
 .bundle-band img {
   width: 100%;
-  max-width: 460px;
+  max-width: 707px;
   margin: 0 auto 1.5rem;
   border-radius: 8px;
   border: 1px solid var(--game-navy-3);
@@ -597,6 +602,25 @@ h3 { color: var(--studio-rust); }
 .bundle-band p {
   margin: 0;
   opacity: 0.85;
+}
+.bundle-band-secondary {
+  background: var(--game-navy-1);
+  padding: 2.5rem 0 3rem;
+}
+.bundle-band-secondary img {
+  max-width: 320px;
+  margin-bottom: 1rem;
+}
+.bundle-band-secondary h3 {
+  font-size: 1.1rem;
+}
+.bundle-band-secondary p {
+  max-width: 520px;
+  margin: 0 auto;
+  font-size: 0.95rem;
+}
+.bundle-band-secondary .btn {
+  margin-top: 1rem;
 }
 
 /* Footer */
